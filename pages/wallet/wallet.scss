@@ -1,0 +1,23 @@
+
+.no-padding-top{
+  padding: 0 !important;
+  &:first-child{
+    margin-top: 10px;
+  }
+  &:last-child{
+    margin-top: 20px;
+  }
+  .item-inner{
+    padding: 0 !important;
+  }
+  ion-label{
+    margin: 0;
+
+  }
+
+}
+
+.add-icon{
+  font-size: 20px;
+  padding-right: 8px;
+}

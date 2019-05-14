@@ -1,0 +1,55 @@
+<ion-header class="custom-header">
+  <ion-navbar>
+    <button ion-button menuToggle color="wh">
+      <ion-icon name="custom-menu"></ion-icon>
+    </button>
+    <ion-title>{{selectedTcket ? selectedTcket.subject : 'Subject'}}</ion-title>
+  </ion-navbar>
+  <div padding-top></div>
+
+</ion-header>
+
+<ion-content class="ticket-reply has-gradient2">
+
+  <ion-refresher (ionRefresh)="loadReplays($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
+  <div padding text-center *ngIf="inLoad">
+    <ion-spinner></ion-spinner>
+  </div>
+
+  <div class="source-holder">
+
+    <div class="replies">
+
+      <div class="replay self">
+          <span class="replay-text">{{selectedTcket.message}}</span>
+          <span class="replay-date">{{selectedTcket.cdate}}</span>
+      </div>
+
+      <div *ngFor="let replay of selectedTcket.replies"  class="replay {{replay.user_id == user.user.id ? 'self' : 'other has-gradient'}}">
+        <span class="replay-text">{{replay.reply}}</span>
+        <span class="replay-date">{{replay.cdate}}</span>
+      </div>
+
+    </div>
+
+  </div>
+</ion-content>
+
+
+  <div class="replay-form">
+    <ion-row>
+      <ion-col col-9  no-padding>
+        <input type="text" placeholder="Enter Your Message" [(ngModel)]="replyText" />
+      </ion-col>
+      <ion-col col-3 no-margin no-padding>
+
+        <button ion-button class="styled-button" [disabled]="!replyText" (click)="saveReply()">Send</button>
+      </ion-col>
+
+    </ion-row>
+
+  </div>

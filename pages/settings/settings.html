@@ -1,0 +1,92 @@
+<ion-header class="custom-header">
+  <ion-navbar>
+    <button ion-button menuToggle color="wh">
+      <ion-icon name="custom-menu"></ion-icon>
+    </button>
+    <ion-title>Settings</ion-title>
+  </ion-navbar>
+    <div padding-top></div>
+</ion-header>
+
+<ion-content class="has-gradient2">
+
+  <div padding text-center *ngIf="inLoad">
+    <ion-spinner></ion-spinner>
+  </div>
+
+
+
+      <div class="source-holder settings" *ngIf="user">
+
+          <ion-list no-padding class="list-content">
+
+              <ion-item color="trans" no-padding>
+                  <ion-icon no-padding name="custom-user"></ion-icon>
+                  <span class="text">
+                            {{user.user.name}}
+                     </span>
+              </ion-item>
+
+              <ion-item color="trans" no-padding>
+                  <ion-icon no-padding name="ios-mail-outline"></ion-icon>
+                  <span class="text">
+                        {{user.user.email}}
+                    </span>
+              </ion-item>
+              <ion-item color="trans" no-padding>
+                    <div class="label-holder" *ngIf="!toggle">
+                        <ion-icon no-padding name="ios-lock-outline"></ion-icon>
+                        <span class="text">
+                            *********
+                     </span>
+                        <ion-note no-padding item-end float-right>
+
+                            <button class="succ-btn " type="button" block  clear small (click)="toggle=true">Change</button>
+
+                        </ion-note>
+                    </div>
+                  <div class="label-holder" *ngIf="toggle">
+                      <ion-item color="trans" no-padding  no-lines>
+                          <form [formGroup]="changePassForm" (submit)="changePass()" >
+                              <ion-item  color="trans" margin-top class="border-top-0">
+                                  <ion-icon class="message"></ion-icon>
+                                  <ion-input name="old_password" formControlName="old_password" type="text" placeholder="Current Password"></ion-input>
+                                  <ion-note no-padding item-end>
+
+                                      <button class="warn-btn change-pass" type="button" block  clear small (click)="changePass()">Save</button>
+
+                                  </ion-note>
+
+                              </ion-item>
+                              <ion-item  color="trans" margin-top class="border-top-0">
+
+                                  <ion-input name="new_password" formControlName="new_password" type="password" placeholder="New Password"></ion-input>
+                              </ion-item>
+
+                              <ion-item  color="trans" margin-top class="border-top-0" no-border="" >
+
+                                  <ion-input name="confirmedPassword" formControlName="confirmedPassword"  type="password" placeholder="Re Enter New Password"></ion-input>
+                              </ion-item>
+
+                          </form>
+
+
+                      </ion-item>
+
+                  </div>
+              </ion-item>
+
+              <ion-item color="trans" no-padding>
+                  <button class="warn-btn" type="button" block  clear small (click)="logOut()" >Sign Out</button>
+              </ion-item>
+
+
+          </ion-list>
+
+
+      </div>
+
+
+
+</ion-content>
+

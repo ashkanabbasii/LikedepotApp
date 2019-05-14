@@ -1,0 +1,81 @@
+<ion-header class="custom-header">
+  <ion-navbar>
+    <button *ngIf="!compose" ion-button menuToggle color="wh">
+      <ion-icon name="custom-menu"></ion-icon>
+    </button>
+    <button *ngIf="compose" ion-button class="compose-ticket left" color="wh" (click)="compose=false">
+      <ion-icon name="ios-arrow-back"></ion-icon>
+    </button>
+
+    <ion-title>{{compose ? "New ticket" : "Tickets"}}</ion-title>
+
+    <button class="compose-ticket right" ion-button item-right (click)="compose=true" *ngIf="!compose">
+      <ion-icon name="custom-new-ticket"></ion-icon>
+    </button>
+  </ion-navbar>
+  <div padding-top></div>
+
+</ion-header>
+
+<ion-content class="has-gradient2">
+
+  <div padding text-center *ngIf="inLoad">
+    <ion-spinner></ion-spinner>
+  </div>
+
+  <ion-refresher (ionRefresh)="loadData($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="source-holder">
+    <ion-list class="list-content" *ngIf="!compose">
+      <ion-item no-padding ion-item *ngFor="let ticket of tickets"  color="trans">
+        <button class="ticket-list" no-padding (click)="showTicket(ticket)">
+
+          <span [class]="ticket.view == 1 ? 'ticket-name' : 'ticket-name isbold'">{{ticket.subject}}</span>
+
+        </button>
+
+        <ion-note  item-end>
+          <span class="status ticket-status" [ngClass]="!ticket.status  ? 'status-0' : (ticket.status == 1 ? 'status-1': 'status-2') "></span>
+          {{ticket.cdate}}
+
+        </ion-note>
+      </ion-item>
+    </ion-list>
+
+    <ion-list no-margin class="list-content" *ngIf="!compose && !tickets.length">
+
+      <ion-item no-padding class="top-auth-section" text-center no-lines color="trans">
+        <ion-icon margin-bottom class="big-icon" name="custom-ticket"></ion-icon>
+
+        <h2 class="ticket-title" margin-top>Please let us know if you have any questions, problems or concerns.</h2>
+      </ion-item>
+
+      <ion-item no-lines  color="trans" >
+        <button  block large ion-button no-margin (click)="compose=true">Send Ticket</button>
+      </ion-item>
+    </ion-list>
+
+    <ion-list no-margin class="list-content" *ngIf="compose">
+
+       <form [formGroup]="ticketForm" (submit)="sendTicket()">
+         <ion-item  color="trans" margin-top class="border-top-0">
+           <ion-icon class="message"></ion-icon>
+           <ion-input name="subject" formControlName="subject" type="text" placeholder="Subject"></ion-input>
+         </ion-item>
+         <ion-item  color="trans" margin-top class="border-top-0">
+           <ion-icon class="message"></ion-icon>
+           <ion-input name="message" formControlName="message" type="text" placeholder="Message"></ion-input>
+         </ion-item>
+
+         <ion-item no-lines color="trans" >
+           <button  block large ion-button [disabled]="!ticketForm.valid">Send</button>
+         </ion-item>
+       </form>
+    </ion-list>
+
+  </div>
+
+</ion-content>
+

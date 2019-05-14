@@ -1,0 +1,44 @@
+<ion-header class="custom-header">
+  <ion-navbar>
+    <button ion-button menuToggle color="wh">
+      <ion-icon name="custom-menu"></ion-icon>
+    </button>
+    <ion-title>Add Money</ion-title>
+  </ion-navbar>
+  <div padding-top ></div>
+</ion-header>
+
+<ion-content class="has-gradient2">
+
+  <div padding text-center *ngIf="inLoad">
+    <ion-spinner></ion-spinner>
+  </div>
+
+    <ion-list  class="list-2">
+      <ion-item color="trans" *ngIf="false">
+        <ion-label floating>Method</ion-label>
+        <ion-select [(ngModel)]="method" (ngModelChange)="prepareData()"  [selectOptions]="{ title : 'Select A Pay Method' }"  interface="popover">
+          <ion-option [value]="item" *ngFor="let item of methods">{{item}}</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item color="trans">
+        <ion-label floating>Amount</ion-label>
+        <ion-select [(ngModel)]="amount" #myselect [selectOptions]="{ title : 'Select Your Price' }"  interface="popover">
+          <ion-option [value]="item" *ngFor="let item of priceSelection">{{'$'+item}}</ion-option>
+          <ion-option   (ionSelect)="changeOptions = priceSelection.length > 5 ? false :true ">Other</ion-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item color="trans" no-lines >
+        <button class="styled-button" block large ion-button [disabled]="amount <= 0"  (click) = buyProduct()>Add Money</button>
+      </ion-item>
+
+      <ion-item  no-lines class="paypal-container">
+        <img  src="assets/imgs/paypal.jpg">
+      </ion-item>
+    </ion-list>
+
+
+
+</ion-content>

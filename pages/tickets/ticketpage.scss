@@ -1,0 +1,40 @@
+
+span.ticket-name{
+  color: #aaa;
+  font-size: 16px;
+  display: inline-block;
+}
+.ticket-list{
+  background: transparent;
+}
+.ticket-status{
+  position: absolute;
+  right: 15px;
+  top: 15px;
+}
+ion-note{
+  color: color($colors,lightgr);
+  font-size: 16px;
+}
+.ticket-title{
+
+  color: color($colors,wh);
+  font-size: 16px;
+  padding: 0;
+  margin-top: 15px !important;
+}
+.compose-ticket{
+  background: transparent;
+  color: color($colors,wh);
+  font-size: 25px;
+  height: 2.5rem;
+  &.right{
+    float: right !important;
+  }
+  &.left{
+    float: left !important;
+  }
+  &:hover{
+    background: transparent;
+  }
+}

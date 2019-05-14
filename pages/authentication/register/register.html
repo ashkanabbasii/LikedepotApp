@@ -1,0 +1,49 @@
+<ion-content class="has-gradient auth-form">
+  <form [formGroup]="registerForm" (submit)="register()">
+
+    <ion-list no-margin class="register-list" padding-horizontal>
+      <ion-item padding-vertical>
+        <ion-label>
+
+          <ion-icon color="lightgr" name="ios-contact-outline"></ion-icon>
+        </ion-label>
+
+        <ion-input type="text" placeholder="Username" name="username"  formControlName="username"></ion-input>
+      </ion-item>
+
+      <ion-item padding-vertical>
+
+        <ion-label>
+          <ion-icon color="lightgr" name="ios-person-outline"></ion-icon>
+        </ion-label>
+        <ion-input type="text" placeholder="Name" name="name"  formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item padding-vertical>
+        <ion-label>
+
+          <ion-icon color="lightgr" name="ios-mail-outline"></ion-icon>
+        </ion-label>
+        <ion-input type="text" placeholder="Email" name="email"  formControlName="email"></ion-input>
+      </ion-item>
+
+
+      <ion-item padding-vertical>
+        <ion-label>
+
+          <ion-icon color="lightgr" name="ios-lock-outline"></ion-icon>
+        </ion-label>
+
+        <ion-input type="password" name="password" placeholder="Password" formControlName="password"></ion-input>
+      </ion-item>
+
+
+
+      <ion-item no-lines>
+        <button  block large ion-button margin-top>Sign up</button>
+        <button class="clear-btn-color" type="button" block large clear small ion-button margin-top (click)="helper.back()" color="wh">i’m already a member</button>
+      </ion-item>
+    </ion-list>
+
+  </form>
+</ion-content>

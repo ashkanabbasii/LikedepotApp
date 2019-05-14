@@ -1,0 +1,108 @@
+
+ .source-name{
+   color: color($colors,wh);
+   font-size: 16px;
+   text-align: center;
+   display: block;
+   width: 100%;
+ }
+ .text{
+   padding-left: 10px;
+ }
+ .warn-btn,.succ-btn{
+
+   background: transparent;
+   font-size: 16px;
+ }
+ .warn-btn{
+   color: color($colors,danger);
+ }
+ .succ-btn{
+   color: color($colors,greencolor);
+ }
+ ion-col{
+   margin-bottom: 35px !important;
+ }
+.product-details{
+  color: color($colors,lightgr);
+  font-size: 15px;
+  margin-top: 10px;
+  display: block;
+}
+
+.replies{
+
+  padding: 20px 5px;
+
+  span{
+    display: block;
+  }
+
+  .replay{
+    width: 85%;
+    padding: 10px;
+    margin: 10px 0px;
+    &.self{
+      border-radius:12px 0px 12px 12px;
+      background: color($colors , light);
+      float:right;
+      .replay-date{
+        color: color($colors , lightgr1);
+      }
+    }
+
+    &.other{
+      border-radius:0px 12px 12px 12px;
+      float: left;
+      color: color($colors , light);
+      .replay-date{
+        color: color($colors , lightgr);
+      }
+    }
+
+    .replay-date{
+      padding: 10px 0px 10px;
+      display: block;
+      opacity: 0.35;
+      text-align: right;
+    }
+
+
+  }
+}
+
+ .ticket-reply{
+    .source-holder{
+     overflow: auto;
+     max-height: calc(100% - 64px);
+    }
+ }
+
+.replay-form{
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  z-index: 10000000;
+  border-top: 1px solid color($colors,lightgr);
+  ion-col{
+    &:first-child{
+      padding-right: 10px;
+    }
+    margin-bottom: 0 !important;
+  }
+  button{
+    margin: 7px 0;
+    min-height:45px;
+    width: 100%;
+    padding: 10px;
+  }
+  input{
+    height: 100%;
+    width: 100%;
+    background: transparent;
+    border: 0;
+    padding: 0 10px;
+    color: color($colors,wh);
+    font-size: 16px;
+  }
+}

@@ -1,0 +1,81 @@
+<ion-header class="custom-header">
+  <ion-navbar>
+    <button ion-button menuToggle color="wh">
+      <ion-icon name="custom-menu"></ion-icon>
+    </button>
+    <ion-title>Orders</ion-title>
+  </ion-navbar>
+  <div padding-top></div>
+
+</ion-header>
+
+<ion-content class="has-gradient2">
+
+  <div padding text-center *ngIf="inLoad">
+    <ion-spinner></ion-spinner>
+  </div>
+
+  <div class="source-holder">
+
+    <ion-list no-padding class="list-content">
+      <ion-item class="img-holder" no-lines color="trans" text-center margin>
+        <img class="tyni-pic" width="75" [src]="selectedOrder.product.source.hasImg ?  url + '/uploads/sources/' + selectedOrder.product.source.id + '.png?d=' + selectedOrder.product.source.d : img">
+        <span class="product-name">{{selectedOrder.product.source.name +' '+ selectedOrder.product.category.name}}</span>
+        <span class="product-details">{{selectedOrder.product.quantity +' '+ selectedOrder.product.category.name}}</span>
+      </ion-item>
+
+      <ion-item color="trans" no-padding>
+        <ion-icon no-padding name="custom-link"></ion-icon>
+        <span class="text">
+             {{selectedOrder.link}}
+          </span>
+      </ion-item>
+      <ion-item color="trans" no-padding>
+        <ion-icon no-padding>#</ion-icon>
+        <span class="text">
+             {{selectedOrder.id}}
+          </span>
+        <ion-note no-padding item-end>
+
+          <button class="succ-btn" type="button" block  clear small (click)="copyOrderId(selectedOrder.id)">Copy</button>
+
+        </ion-note>
+
+      </ion-item>
+
+      <ion-item color="trans" no-padding>
+        <ion-icon no-padding name="custom-date"></ion-icon>
+        <span class="text">
+            {{selectedOrder.created_at}}
+          </span>
+      </ion-item>
+      <ion-item color="trans" no-padding>
+        <ion-icon no-padding name="custom-wallet"></ion-icon>
+        <span class="text">
+            ${{selectedOrder.price}}
+          </span>
+      </ion-item>
+      <ion-item color="trans" no-lines no-padding>
+        <ion-icon no-padding name="custom-status"></ion-icon>
+        <span class="text {{selectedOrder.status == 1 ?'green-text' :''}} {{selectedOrder.status == 2 ?'yellow-text' :''}}">
+            {{!selectedOrder.status  ? 'Pendding' : (selectedOrder.status == 1 ? 'Completed': 'In progress') }}
+          </span>
+        <ion-note no-padding item-end>
+
+          <button class="warn-btn" [ngSwitch]="selectedOrder.status" item-end type="button" block  clear small >
+            <span class="status-1 status" *ngSwitchCase="1"></span>
+            <span class="status-2 status" *ngSwitchCase="2"></span>
+
+            <span *ngSwitchDefault (click)="cancelOrder()">Cancel Order</span>
+
+          </button>
+
+        </ion-note>
+
+      </ion-item>
+
+    </ion-list>
+
+
+  </div>
+</ion-content>

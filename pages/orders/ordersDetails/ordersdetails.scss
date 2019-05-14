@@ -1,0 +1,31 @@
+
+ .source-name{
+   color: color($colors,wh);
+   font-size: 16px;
+   text-align: center;
+   display: block;
+   width: 100%;
+ }
+ .text{
+   padding-left: 10px;
+ }
+ .warn-btn,.succ-btn{
+
+   background: transparent;
+   font-size: 16px;
+ }
+ .warn-btn{
+   color: color($colors,danger);
+ }
+ .succ-btn{
+   color: color($colors,greencolor);
+ }
+ ion-col{
+   margin-bottom: 35px !important;
+ }
+.product-details{
+  color: color($colors,lightgr);
+  font-size: 15px;
+  margin-top: 10px;
+  display: block;
+}

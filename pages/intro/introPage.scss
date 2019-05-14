@@ -1,0 +1,43 @@
+.ios, .md {
+
+  page-intro {
+
+    ion-slide {
+      background-color:#000;
+      .start-app{
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+    ion-slide img {
+      width: 100% !important;
+    }
+
+    .swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet{
+
+      background: color($colors,wh);
+      width: 10px;
+      height: 10px;
+      margin-bottom: 40px;
+    }
+    .skip-intro-left,.skip-intro-right{
+      position: absolute;
+      background: none;
+      color: color($colors,wh);
+      font-size: 20px;
+      bottom: 25px;
+
+    }
+    .skip-intro-right{
+      right: 20px;
+
+    }
+    .skip-intro-left{
+      left: 20px;
+
+    }
+
+  }
+
+}

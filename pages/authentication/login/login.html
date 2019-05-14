@@ -1,0 +1,44 @@
+
+<ion-content class="has-gradient auth-form ">
+  <form [formGroup]="loginForm" (submit)="login()">
+
+    <ion-list no-margin padding-horizontal>
+
+      <ion-item text-center no-lines>
+          <div class="text-center">
+
+            <div class="logo-circle">
+              <img src="assets/imgs/likedepot.png">
+            </div>
+
+          </div>
+      </ion-item>
+
+      <ion-item padding>
+        <ion-label>
+          <ion-icon color="lightgr" name="custom-user"></ion-icon>
+
+        </ion-label>
+        <ion-input type="text" placeholder="Username" name="username"  formControlName="username"></ion-input>
+      </ion-item>
+
+      <ion-item padding>
+         <ion-label>
+           <ion-icon color="lightgr" name="custom-password"></ion-icon>
+         </ion-label>
+        <ion-input type="password" placeholder="Password" name="password"  formControlName="password"></ion-input>
+      </ion-item>
+
+      <ion-item no-lines>
+        <button class="styled-button" block large ion-button margin-top>Sign in</button>
+        <div class="inline-double">
+
+          <button class="clear-btn-color" type="button" block large clear small ion-button margin-top (click)="helper.redirect(registerPage)">Create Account</button>
+          <button class="clear-btn-color" type="button" block large clear small ion-button margin-top (click)="helper.redirect(forgetPage)">Forget Password</button>
+
+        </div>
+      </ion-item>
+    </ion-list>
+
+  </form>
+</ion-content>

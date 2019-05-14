@@ -1,0 +1,89 @@
+<ion-header class="custom-header" >
+  <ion-navbar [hideBackButton]="true">
+    <button ion-button color="wh" clear>
+      <ion-icon name="custom-back" (click)="backing()"></ion-icon>
+    </button>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+  <div padding-top></div>
+
+</ion-header>
+
+<ion-content class="has-gradient2">
+  <div padding text-center *ngIf="inLoad">
+    <ion-spinner></ion-spinner>
+  </div>
+
+  <ion-list *ngIf="step == 1" class="source-holder" >
+    <ion-item class="img-holder" no-lines color="trans" text-center margin>
+      <img class="tyni-pic" width="75" [src]="selectedSource.hasImg ?  url + '/uploads/sources/' + selectedSource.id + '.png?d=' + selectedSource.d : img">
+      <span class="product-name">{{selectedSource.name}}</span>
+    </ion-item>
+
+    <ion-item color="trans">
+      <ion-label floating>Category</ion-label>
+      <ion-select [(ngModel)]="category" #myselect1 (ngModelChange)="prepareData()" [selectOptions]="{ title : 'Select A Category' }"  interface="popover" (ngModelChange)="reset()">
+        <ion-option [value]="item.id" *ngFor="let item of categoriesItems">{{item.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item color="trans">
+      <ion-label floating>Service</ion-label>
+      <ion-select [(ngModel)]="service"  #myselect2  (ngModelChange)="prepareData()" [selectOptions]="{ title : 'Select A Service' }"  interface="popover">
+        <ion-option [value]="item.id" *ngFor="let item of servicesItems">{{item.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item color="trans">
+      <ion-label floating>Quantity</ion-label>
+      <ion-select [(ngModel)]="quantity"  #myselect3  (ngModelChange)="prepareData()"  [selectOptions]="{ title : 'Select A Quantity' }"  interface="popover">
+        <ion-option [value]="item.q" *ngFor="let item of quantities">{{item.q+" / "+" $"+ item.p}}</ion-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item color="trans" no-lines class="text">
+      <ion-icon name="ios-information-circle-outline"></ion-icon>
+      <p>{{selectedProduct ? selectedProduct.description : "First Choose Your Orders Options"}}</p>
+    </ion-item>
+    <ion-item color="trans" no-lines >
+      <div [class]='quantity ? "styled-button-2  margin-top green bigger-font" : "styled-button-2  bigger-font margin-top"' >
+        <span>Price : {{  selectedProduct ?"$" + selectedProduct.price  : 0}}</span>
+      </div>
+    </ion-item>
+
+     <ion-item color="trans" no-lines >
+       <button class="styled-button" block large ion-button margin-top [disabled]="!category || !service || !quantity" (click)="nextStep()">Next</button>
+    </ion-item>
+  </ion-list>
+
+
+  <ion-list *ngIf="step == 2" class="list-2">
+    <ion-item  color="trans" margin-top class="border-top-0">
+      <ion-input type="text" placeholder="Enter Your URL" [(ngModel)]="photo_url"></ion-input>
+    </ion-item>
+
+    <ion-item color="trans" no-lines >
+      <div [class]='quantity ? "styled-button-2  margin-top green bigger-font" : "styled-button-2  bigger-font margin-top"'>
+        <span>Price : {{  selectedProduct ?"$" + selectedProduct.price  : 0}}</span>
+      </div>
+    </ion-item>
+
+    <ion-item color="trans" no-lines >
+      <button class="styled-button" block large ion-button [disabled]="!selectedProduct  || !photo_url" (click)="buyProduct()">Submit</button>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="step == 3">
+      <div class="success-text">
+        <div class="w-100 holder">
+          <ion-icon class="check-icon" name="ios-checkmark-circle-outline"></ion-icon>
+          <div class="success-title ">
+            Thank you, your order has been placed.
+          </div>
+          <div class="success-subtitle ">
+            You’ll receive a notification once your orders are delivered.
+          </div>
+        </div>
+      </div>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,32 @@
+<ion-header class="custom-header">
+  <ion-navbar>
+    <button ion-button menuToggle color="wh">
+      <ion-icon name="custom-menu"></ion-icon>
+    </button>
+    <ion-title>Orders</ion-title>
+  </ion-navbar>
+    <div padding-top></div>
+
+</ion-header>
+
+<ion-content class="has-gradient2">
+
+  <div padding text-center *ngIf="inLoad">
+    <ion-spinner></ion-spinner>
+  </div>
+
+  <div class="source-holder">
+      <ion-list class="list-content">
+          <ion-item no-padding ion-item *ngFor="let order of orders" color="trans">
+              <button class="order-list"  (click)="orderView(order)">
+                  <span class="status" [ngClass]="!order.status  ? 'status-0' : (order.status == 1 ? 'status-1': 'status-2') "></span>
+                  <span [class]="order.view == 1 ? 'order-name' : 'order-name isbold'">{{order.product.source.name + " " + order.product.category.name}}</span>
+
+              </button>
+              <ion-note  item-end>#{{order.id}}</ion-note>
+              <ion-note  item-end>${{order.price}}</ion-note>
+          </ion-item>
+      </ion-list>
+  </div>
+</ion-content>
+

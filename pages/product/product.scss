@@ -1,0 +1,47 @@
+.source-holder{
+  .img-holder{
+    padding: 0;
+    margin: 0 auto !important;
+  }
+  span.product-name{
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+  .text{
+    padding-top: 30px;
+    ion-icon{
+      float: left;
+      padding-right: 20px;
+    }
+    p{
+      white-space: pre-line;
+      line-height: 20px;
+      font-size: 17px;
+    }
+
+  }
+  img{
+    width: 100%;
+  }
+  .tyni-pic{
+    max-width: 75px;
+  }
+}
+
+.border-top-0{
+  border-top: 0 !important;
+}
+.margin-top{
+  margin-top: 30px;
+}
+
+.holder{
+  text-align: center;
+  margin-top: 200px;
+  padding: 0 20px;
+
+}
+.bigger-font{
+  font-size: 18px;
+}

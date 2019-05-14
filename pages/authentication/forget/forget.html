@@ -1,0 +1,85 @@
+
+<ion-content class="has-gradient auth-form">
+
+
+  <div *ngIf="!send && !reset">
+    <form [formGroup]="forgetForm" (submit)="resetPass()">
+
+      <ion-list no-margin>
+
+        <ion-item class="top-auth-section" text-center no-lines>
+          <ion-icon class="big-icon" name="lock"></ion-icon>
+          <h1>Forgot password?</h1>
+          <h2>
+            Please check your E-mail for instructions on how
+            to complete the password reset process.
+          </h2>
+        </ion-item>
+
+        <ion-item>
+          <ion-input type="text" placeholder="Email" name="email"  formControlName="email"></ion-input>
+        </ion-item>
+
+        <ion-item no-lines>
+          <button class="styled-button" block large ion-button margin-top>Reset password</button>
+        </ion-item>
+      </ion-list>
+
+      <button class="back-btn" ion-button icon-only clear color="wh" (click)="helper.back()">
+        <ion-icon name="ios-arrow-back"></ion-icon>
+      </button>
+
+    </form>
+  </div>
+  <form [formGroup]="changePassForm" (submit)="resetPass()" *ngIf="reset">
+
+    <ion-list no-margin>
+
+      <ion-item class="top-auth-section" text-center no-lines>
+        <ion-icon class="big-icon" name="lock"></ion-icon>
+        <h1>Enter Your new Password</h1>
+
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="text" placeholder="Password" name="new_password"  formControlName="new_password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" placeholder="Password Again" name="confirmedPassword"  formControlName="confirmedPassword"></ion-input>
+      </ion-item>
+
+      <ion-item no-lines>
+        <button class="styled-button" block large ion-button margin-top>Reset password</button>
+      </ion-item>
+    </ion-list>
+
+    <button class="back-btn" ion-button icon-only clear color="wh" (click)="helper.back()">
+      <ion-icon name="ios-arrow-back"></ion-icon>
+    </button>
+
+  </form>
+
+  <div *ngIf="send">
+    <ion-list no-lines>
+      <ion-item class="success-text">
+        <div class="holder">
+          <ion-icon class="check-icon" name="ios-checkmark-circle-outline"></ion-icon>
+          <div class="success-title ">
+            Your password has been reset
+          </div>
+          <div class="success-subtitle normal-white-space">
+            Please check your E-mail for instructions on how
+            to complete the password reset process.
+          </div>
+
+        </div>
+      </ion-item>
+      <ion-item no-lines>
+        <button class="styled-button" block large ion-button margin-top (click)="helper.back()">Sign In</button>
+      </ion-item>
+
+    </ion-list>
+
+  </div>
+
+</ion-content>

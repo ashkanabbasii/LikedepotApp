@@ -1,0 +1,35 @@
+<ion-header class="custom-header">
+  <ion-navbar>
+    <button ion-button menuToggle color="wh">
+      <ion-icon name="custom-menu"></ion-icon>
+    </button>
+    <ion-title>Wallet</ion-title>
+  </ion-navbar>
+    <div padding-top></div>
+</ion-header>
+
+<ion-content class="has-gradient2">
+
+  <div padding text-center *ngIf="inLoad">
+    <ion-spinner></ion-spinner>
+  </div>
+
+  <div class="source-holder" *ngIf="user">
+      <ion-list class="list-content">
+          <ion-item color="trans" no-lines class="no-padding-top">
+              <div class="styled-button-2 ">
+                  <span>Balance : {{user ?" $" + user.user.wallet  : 0}}</span>
+              </div>
+          </ion-item>
+          <ion-item color="trans" no-lines no-margin class="no-padding-top">
+              <button class="styled-button-2 green" block large ion-button (click)="helper.redirect(addwallet,user.user.id)">
+                  <ion-icon class="add-icon" name="ios-add"></ion-icon>
+                  <span> Add Money</span>
+              </button>
+          </ion-item>
+
+      </ion-list>
+
+  </div>
+</ion-content>
+
